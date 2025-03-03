@@ -11,6 +11,9 @@ import { AuthEntity } from 'src/domain/entities/auth.entity';
 export class UserRespositoryImpl implements UserRepositoryPort {
 
   constructor( private _userService: UserService){}
+  logout(): void {
+    return this._userService.logout();
+  }
 
   addUser(user: UserEntity): Observable<UserEntity> {
     return this._userService.addUser(user);

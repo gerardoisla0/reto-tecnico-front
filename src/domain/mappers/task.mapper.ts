@@ -1,17 +1,20 @@
-import { TaskDTO } from '../../infrastructure/dto/task.dto';
+import { SaveTaskDTO } from 'src/infrastructure/dto/saveTask.dto';
+import { TaskDTO, Task } from '../../infrastructure/dto/task.dto';
 import { TaskEntity } from '../entities/task.entity';
 
 export class TaskMapper {
-  static fromDtoToDomain(dto: TaskDTO): TaskEntity {
+  static fromDtoToDomain(dto: Task): TaskEntity {
     return new TaskEntity(dto.id, dto.title, dto.description, dto.status);
   }
 
-  static fromDomainToDto(entity: TaskEntity): TaskDTO {
+  static fromDomainToDto(entity: TaskEntity): SaveTaskDTO {
     return {
-      id: entity.id,
-      title: entity.title,
-      description: entity.description,
-      status: entity.status
+      saveTaskRQ: {
+        title: entity.title,
+        description: entity.description,
+        status: entity.status
+      }
     };
   }
 }
+

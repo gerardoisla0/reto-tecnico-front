@@ -45,8 +45,13 @@ export class UserService {
         return this.handleError(error);
       })
     );
-
   }
+
+  logout() {
+        LocalStorageAdapter.removeItem('authToken');
+        LocalStorageAdapter.removeItem('email');
+  }
+
   private handleError(error: any): Observable<never> {
     if (error.status === 422) {
       return throwError(() => new Error(error.error.message || 'Cliente ya existe'));

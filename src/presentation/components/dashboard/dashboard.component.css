@@ -39,3 +39,61 @@ mat-header-cell, mat-cell {
   font-size: 14px;
   padding: 12px;
 }
+
+mat-table {
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Estilo para los botones en las filas de la tabla */
+button.mat-icon-button {
+  margin-right: 8px;
+}
+
+/* Botón de Agregar tarea */
+button[mat-raised-button] {
+  margin: 20px 0;
+  display: inline-flex;
+  align-items: center;
+  background-color: #3f51b5;
+  color: white;
+}
+
+button[mat-raised-button] mat-icon {
+  margin-right: 8px;
+}
+
+/* Tooltip para los botones */
+::ng-deep .mat-tooltip {
+  font-size: 14px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo para la tabla y celdas */
+mat-header-row, mat-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-header-cell, mat-cell {
+  padding: 10px;
+}
+
+mat-header-cell {
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+
+mat-row:hover {
+  background-color: #f9f9f9;
+}
+
+.spacer {
+  flex: 1;
+}
+
+/* Alineamos el botón del menú a la derecha */
+.menu-button {
+  margin-left: auto; /* Esto empuja el botón hacia la derecha */
+}
