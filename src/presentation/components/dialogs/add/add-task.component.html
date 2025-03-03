@@ -18,11 +18,15 @@
     </div>
 
       <div class="form">
-          <mat-form-field color="accent">
-              <input matInput #inputstate class="form-control" placeholder="Estado" [(ngModel)]="data.status" name="Estado" maxlength="10" required>
-              <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-              <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
-          </mat-form-field>
+        <mat-form-field color="accent">
+          <mat-label>Estado</mat-label>
+          <mat-select [(ngModel)]="data.status" name="status" required>
+            <mat-option value="EN PROCESO">EN PROCESO</mat-option>
+            <mat-option value="COMPLETADA">COMPLETADA</mat-option>
+            <mat-option value="RECHAZADA">RECHAZADA</mat-option>
+          </mat-select>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
       </div>
 
       <div mat-dialog-actions>

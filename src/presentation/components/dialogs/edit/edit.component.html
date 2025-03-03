@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title>Issue id: {{data.id}}</h3>
+  <h3 mat-dialog-title>Tarea id: {{data.id}}</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
@@ -28,9 +28,15 @@
       </div>
 
       <div class="form">
-          <mat-form-field color="accent">
-              <input matInput placeholder="Estado" [(ngModel)]="data.status" name="url">
-          </mat-form-field>
+        <mat-form-field color="accent">
+          <mat-label>Estado</mat-label>
+          <mat-select [(ngModel)]="data.status" name="status" required>
+            <mat-option value="EN PROCESO">EN PROCESO</mat-option>
+            <mat-option value="COMPLETADA">COMPLETADA</mat-option>
+            <mat-option value="RECHAZADA">RECHAZADA</mat-option>
+          </mat-select>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
       </div>
 
       <div mat-dialog-actions>
