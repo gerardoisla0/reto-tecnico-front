@@ -5,30 +5,45 @@ import { UserEntity } from '../../domain/entities/user.entity';
 import { UserMapper } from '../../domain/mappers/user.mapper';
 import { UserDTO } from '../dto/user.dto';
 import { ResponseDTO } from '../dto/response.dto';
+import { AuthEntity } from 'src/domain/entities/auth.entity';
+import { LocalStorageAdapter } from '../adapters/storage/storage.adapter';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-
-  private endpoint = `/v1/user/create`;
+  private endpoint_create = `/v1/user/create`;
+  private endpoint_auth = `/v1/user/login`;
 
   constructor( private httpAdapter: HttpAdapter){}
 
   addUser( user: UserEntity ):Observable<UserEntity> {
     const apiUser  = UserMapper.fromDomainToDto(user);
-    return this.httpAdapter.post<ResponseDTO>(this.endpoint, apiUser).pipe(
+    return this.httpAdapter.post<ResponseDTO>(this.endpoint_create, apiUser).pipe(
       map(UserMapper.fromDtoToDomain),
       catchError(this.handleError)
     );
   }
 
-  loginUser( user: UserEntity): Observable<any> {
-    const url = `${this.endpoint}/${user.id}`;
-    const userApi = UserMapper.fromDomainToDto(user);
-    return this.httpAdapter.post<UserDTO>(this.endpoint, userApi).pipe(
-      //map(UserMapper.fromDtoToDomain)
+  loginUser( user: AuthEntity): Observable<UserEntity> {
+    const userApi = UserMapper.fromDomainToDtoAuth(user);
+    return this.httpAdapter.post<ResponseDTO>(this.endpoint_auth, userApi).pipe(
+      map((response) => {
+        const token = response.authUserRS?.token;
+        if (token) {
+          LocalStorageAdapter.setItem('authToken', token);
+          LocalStorageAdapter.setItem('email', user.email);
+        }
+        return UserMapper.fromDtoToDomain(response);
+      }),
+      catchError((error) => {
+        if (error.status === 422) {
+          LocalStorageAdapter.removeItem('authToken');
+          LocalStorageAdapter.removeItem('email');
+        }
+        return this.handleError(error);
+      })
     );
 
   }

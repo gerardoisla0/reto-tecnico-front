@@ -10,10 +10,12 @@ import { HttpAdapter } from '../adapters/http/http.adapter';
 })
 export class TaskService {
   private endpoint = '/tasks';
+  private endpoin_all = '/v1/task/create';
+
 
   constructor(private httpAdapter: HttpAdapter) {}
   getTasks(): Observable<TaskEntity[]> {
-    return this.httpAdapter.get<TaskDTO[]>(this.endpoint).pipe(
+    return this.httpAdapter.get<TaskDTO[]>(this.endpoin_all).pipe(
       map((apiTasks) => apiTasks.map(TaskMapper.fromDtoToDomain))
     );
   }

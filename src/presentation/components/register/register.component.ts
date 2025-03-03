@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
       password: password
     }
 
+    this.loading = true;
     this._addUserUseCase.execute(userCreated).subscribe({
       next: (response) => {
         this._snackBar.open('User created successfully!', '', {
@@ -46,9 +47,11 @@ export class RegisterComponent implements OnInit {
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
+        this.loading = false;
+        this.router.navigate(['login'])
       },
       error: (error) => {
-        if (error.message === 'Cliente ya existe') {
+        if (error.message == 'El cliente ya se encuentra registrado') {
           this._snackBar.open(error.message, '', {
             duration: 5000,
             horizontalPosition: 'center',
@@ -62,6 +65,7 @@ export class RegisterComponent implements OnInit {
           });
         }
         this.form.reset();
+        this.loading = false;
       }
     });
   }

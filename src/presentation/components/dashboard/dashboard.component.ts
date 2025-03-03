@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadData();
+      this.loadData();
   }
 
   refresh() {
@@ -117,15 +117,15 @@ export class DashboardComponent implements OnInit {
     }*/
 
       loadData() {
-        if (this.paginator && this.sort) {
-          this.dataSource = new TaskingDataSource(this.getTaskUseCase, this.paginator, this.sort);
+        //if (this.paginator && this.sort) {
+          this.dataSource = new TaskingDataSource(this.getTaskUseCase, this.paginator!, this.sort!);
 
           fromEvent(this.filter!.nativeElement, 'keyup').subscribe(() => {
             if (this.dataSource) {
               this.dataSource.filter = this.filter!.nativeElement.value;
             }
           });
-        }
+       // }
       }
 }
 
