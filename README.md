@@ -36,7 +36,8 @@ El proyecto sigue una **arquitectura limpia** utilizando el patrón **Hexagonal*
 
 2. Instala las dependencias:
 
-   ```npm install
+   ```
+         npm install
       ```
    
 3. Inicia la aplicación en modo desarrollo:
@@ -46,3 +47,5 @@ El proyecto sigue una **arquitectura limpia** utilizando el patrón **Hexagonal*
    ```
    
 La aplicación estará disponible en http://localhost:4200.
+
+Demo: https://seek.hazcrecer.com
