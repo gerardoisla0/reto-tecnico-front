@@ -1,0 +1,21 @@
+<div class="login-container">
+  <div class="login-left">
+    <h2>Iniciar Sesión 👋</h2>
+    <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
+      <label for="email">Correo</label>
+      <input type="text" matInput autocomplete="off" formControlName="usuario">
+      <label for="password">Contraseña</label>
+      <input type="password" matInput autocomplete="off" formControlName="password">
+      <br>
+      <button type="submit" class="field-width button-height" mat-raised-button color="primary" [disabled]="form.invalid">Ingresar</button>
+    </form>
+    <p>Si no tienes una cuenta? <a routerLink="/register">Crear Cuenta</a></p>
+  </div>
+  <div class="login-right">
+    <div class="login-info">
+      <h3>Gestión de Tareas Seek</h3>
+      <p>Optimiza y coordina eficientemente tus actividades diarias.</p>
+    </div>
+  </div>
+</div>
