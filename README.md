@@ -1,27 +1,48 @@
-# RetoTecnico
+# Proyecto Frontend en Angular con Arquitectura Limpia
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
+Este proyecto fue desarrollado utilizando **Angular 12** y **Angular Material 12** con una arquitectura limpia basada en el patrón **Hexagonal**. La estructura está organizada en tres capas bien definidas: **Dominio**, **Infraestructura** y **Presentación**. Además, se conecta de manera eficiente con la API Backend a través de puertos y adaptadores, siguiendo principios de modularidad y escalabilidad.
 
-## Development server
+## Arquitectura
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+El proyecto sigue una **arquitectura limpia** utilizando el patrón **Hexagonal** (Ports and Adapters), con las siguientes capas:
 
-## Code scaffolding
+- **Capa de Dominio**: Contiene las entidades de negocio y las interfaces de los casos de uso. Define la lógica principal sin depender de la infraestructura externa.
+- **Capa de Presentación**: Encargada de la interfaz de usuario utilizando **Angular Material**. Aquí se gestionan los componentes y servicios para interactuar con el usuario.
+- **Capa de Infraestructura**: Implementa las interacciones con el mundo exterior, como las llamadas HTTP al backend. Se comunica con la API a través de los puertos definidos en la capa de dominio.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Patrones Implementados
 
-## Build
+- **Arquitectura Limpia**: Organiza el código en capas bien definidas que facilitan la mantenibilidad, extensibilidad y la capacidad de prueba.
+- **Hexagonal (Ports and Adapters)**: La lógica de negocio está desacoplada de la infraestructura y la presentación, lo que facilita el reemplazo o modificación de componentes externos sin afectar la lógica central.
+- **Adapter Pattern**: Utiliza adaptadores para conectar la aplicación con APIs externas o el backend.
+- **Test Unitarios**: Se incluyen pruebas unitarias de ejemplo para asegurar la calidad del código.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalación
 
-## Running unit tests
+### Requisitos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Node.js** (versión 16 o superior)
+- **Angular CLI**
+- **npm** (Gestor de paquetes de Node)
 
-## Running end-to-end tests
+### Pasos para iniciar
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clona el repositorio:
 
-## Further help
+   ```bash
+   git clone <URL-del-repositorio>
+   cd <nombre-del-proyecto>
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Instala las dependencias:
+
+   ```npm install
+      ```
+   
+3. Inicia la aplicación en modo desarrollo:
+
+   ```
+      npm run start
+   ```
+   
+La aplicación estará disponible en http://localhost:4200.
