@@ -32,12 +32,12 @@ export class TaskService {
 
   updateTask(task: TaskEntity): Observable<void> {
     const url = `${this.endpoin_update}/${task.id}`;
-    const apiTask = TaskMapper.fromDomainToDto(task);
+    const apiTask = TaskMapper.fromDomainToDtoUpdate(task);
     return this.httpAdapter.put<void>(url, apiTask);
   }
 
-  deleteTask(id: number): Observable<void> {
-    const url = `${this.endpoin_delete}/${id}`;
+  deleteTask(task: TaskEntity): Observable<void> {
+    const url = `${this.endpoin_delete}/${task.id}`;
     return this.httpAdapter.delete<void>(url);
   }
 

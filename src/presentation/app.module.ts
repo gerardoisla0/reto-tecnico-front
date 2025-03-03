@@ -15,6 +15,8 @@ import { TaskRepositoryImpl } from 'src/infrastructure/repositories/task.resposi
 import { UserRespositoryImpl } from 'src/infrastructure/repositories/user.respository.impl';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from 'src/infrastructure/adapters/http/http.interceptor';
+import { DeleteDialogComponent } from './components/dialogs/delete/delete.component';
+import { EditDialogComponent } from './components/dialogs/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AuthInterceptor } from 'src/infrastructure/adapters/http/http.intercept
     LoginComponent,
     AddDialogComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    DeleteDialogComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,

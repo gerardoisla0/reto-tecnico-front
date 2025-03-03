@@ -24,7 +24,7 @@ export class TaskRepositoryImpl implements TaskRepositoryPort {
     return this.taskService.updateTask(task);
   }
 
-  deleteTask(id: number): Observable<void> {
-    return this.taskService.deleteTask(id);
+  deleteTask(task: TaskEntity): Observable<void> {
+    return this.taskService.deleteTask(task);
   }
 }

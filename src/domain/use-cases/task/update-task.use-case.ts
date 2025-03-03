@@ -13,7 +13,7 @@ export class UpdateTaskUseCase {
   constructor(private taskRespository: TaskRepositoryPort){}
 
 
-  exevute(task: TaskEntity): Observable<void> {
+  execute(task: TaskEntity): Observable<void> {
     return this.taskRespository.updateTask(task);
   }
 }
